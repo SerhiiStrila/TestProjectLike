@@ -1,10 +1,12 @@
-package com.serhii.strila.testproject;
+package com.serhii.strila.testproject.ui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import com.serhii.strila.testproject.R;
 
 /**
  * Created by Serhii Strila on 11/29/15

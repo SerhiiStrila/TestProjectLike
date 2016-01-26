@@ -1,15 +1,19 @@
-package com.serhii.strila.testproject;
+package com.serhii.strila.testproject.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.serhii.strila.testproject.R;
+import com.serhii.strila.testproject.ui.adapter.SectionsPagerAdapter;
+import com.serhii.strila.testproject.ui.fragment.ListUsersFragment;
+import com.serhii.strila.testproject.ui.fragment.MapFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;

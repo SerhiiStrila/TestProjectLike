@@ -1,4 +1,4 @@
-package com.serhii.strila.testproject;
+package com.serhii.strila.testproject.ui.fragment;
 
 
 import android.os.Bundle;

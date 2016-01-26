@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath "io.realm:realm-gradle-plugin:0.87.3"
     }
 }
 
@@ -10,6 +11,7 @@ plugins {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 'Google Inc.:Google APIs:23'
@@ -41,7 +43,6 @@ android {
 
     dexOptions {
         javaMaxHeapSize "4g"
-        incremental true
     }
 
     compileOptions {
@@ -51,8 +52,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile project(':testlib')
 
     apt 'com.google.dagger:dagger-compiler:2.0.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
@@ -71,5 +73,5 @@ dependencies {
     compile 'com.trello:rxlifecycle-components:0.4.0'
     compile 'com.jakewharton:butterknife:7.0.1'
 
-    compile project(':testlib')
+    compile 'me.zhanghai.android.materialprogressbar:library:1.1.4'
 }

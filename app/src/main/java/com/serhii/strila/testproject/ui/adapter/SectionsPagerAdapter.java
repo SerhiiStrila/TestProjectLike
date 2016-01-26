@@ -1,4 +1,4 @@
-package com.serhii.strila.testproject;
+package com.serhii.strila.testproject.ui.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

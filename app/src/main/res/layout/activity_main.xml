@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.serhii.strila.testproject.MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -32,7 +32,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.serhii.strila.testproject.CustomViewPager
+    <com.serhii.strila.testproject.ui.view.CustomViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

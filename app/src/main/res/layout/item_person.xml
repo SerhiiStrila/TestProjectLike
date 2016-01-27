@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="2dp"
+    card_view:cardPreventCornerOverlap="true"
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:id="@+id/img_photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:autoScale="true" />
+            card_view:autoScale="true" />
 
         <android.support.v4.widget.Space
             android:id="@+id/center_bottom"

@@ -20,8 +20,9 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.realm.RealmChangeListener;
 
-public class PersonsListFragment extends BaseFragment {
+public class PersonsListFragment extends BaseFragment implements RealmChangeListener {
 
     @Bind(R.id.rv_users)
     RecyclerView mRvUsers;
@@ -43,7 +44,19 @@ public class PersonsListFragment extends BaseFragment {
         ButterKnife.bind(this, rootView);
         initList();
         loadPersons(0);
+        mRealm.addChangeListener(this);
         return rootView;
+    }
+
+    @Override
+    public void onChange() {
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDestroyView() {
+        mRealm.removeChangeListener(this);
+        super.onDestroyView();
     }
 
     private void initList() {
@@ -62,11 +75,14 @@ public class PersonsListFragment extends BaseFragment {
     }
 
     private void loadPersons(int page) {
+        mAdapter.setFooterVisibility(true);
         Utils.getPersons(page)
                 .compose(bindUntilEvent(FragmentEvent.DESTROY_VIEW))
                 .compose(Utils.applySchedulers())
                 .map(json -> mGson.<List<Person>>fromJson(json, new TypeToken<ArrayList<Person>>() {
                 }.getType()))
+                .doOnNext(per -> mAdapter.setFooterVisibility(false))
+                .doOnError(per -> mAdapter.setFooterVisibility(false))
                 .subscribe(persons -> {
                     mRealm.beginTransaction();
                     mRealm.copyToRealmOrUpdate(persons);

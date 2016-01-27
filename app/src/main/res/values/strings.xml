@@ -9,4 +9,6 @@
     <string name="generate.activity.generate">Generate</string>
     <string name="item.person.dislike">Dislike</string>
     <string name="item.person.like">Like</string>
+    <string name="main.activity.tab.list">List</string>
+    <string name="main.activity.tab.map">Map</string>
 </resources>

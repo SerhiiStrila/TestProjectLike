@@ -21,12 +21,6 @@ public abstract class EndlessListener extends RecyclerView.OnScrollListener {
         this.mLinearLayoutManager = linearLayoutManager;
     }
 
-    public void restoreItems() {
-        mPreviousTotal = 0;
-        mLoading = false;
-        mCurrentPage = 1;
-    }
-
     public void reLoad() {
         mPreviousTotal = 0;
         mLoading = false;

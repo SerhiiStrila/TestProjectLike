@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.serhii.strila.testproject.R;
 import com.serhii.strila.testproject.model.Person;
+import com.serhii.strila.testproject.ui.adapter.viewholder.FooterProgressViewHolder;
 import com.serhii.strila.testproject.ui.adapter.viewholder.PersonViewHolder;
 
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ import java.util.List;
 /**
  * Created by Serhii Strila on 1/26/16
  */
-public class PersonAdapter extends UltimateAdapter<PersonViewHolder> {
+public class PersonAdapter extends UltimateAdapter<PersonViewHolder> implements
+        UltimateAdapter.FooterInterface {
 
     private List<Person> mPersons;
 
@@ -62,5 +64,20 @@ public class PersonAdapter extends UltimateAdapter<PersonViewHolder> {
     @Override
     public void bindDataVH(@NonNull PersonViewHolder vh, int dataPosition) {
         vh.bind(mPersons.get(dataPosition));
+    }
+
+    @Override
+    public FooterVH getFooterVH(View v) {
+        return new FooterProgressViewHolder(v);
+    }
+
+    @Override
+    public int getFooterViewResId() {
+        return R.layout.item_footer_progress;
+    }
+
+    @Override
+    public void bindFooterVH(FooterVH vh) {
+
     }
 }

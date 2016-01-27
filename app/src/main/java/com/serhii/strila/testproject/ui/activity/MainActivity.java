@@ -11,6 +11,7 @@ import com.serhii.strila.testproject.ui.fragment.MapFragment;
 import com.serhii.strila.testproject.ui.fragment.PersonsListFragment;
 
 import butterknife.Bind;
+import butterknife.BindString;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
@@ -21,6 +22,10 @@ public class MainActivity extends BaseActivity {
     TabLayout mTabs;
     @Bind(R.id.container)
     ViewPager mViewPager;
+    @BindString(R.string.main_activity_tab_list)
+    String tabList;
+    @BindString(R.string.main_activity_tab_map)
+    String tabMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,8 @@ public class MainActivity extends BaseActivity {
     private void initPager() {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(
                 getSupportFragmentManager());
-        sectionsPagerAdapter.addFragment(PersonsListFragment.newInstance(), "List");
-        sectionsPagerAdapter.addFragment(MapFragment.newInstance(), "Map");
+        sectionsPagerAdapter.addFragment(PersonsListFragment.newInstance(), tabList);
+        sectionsPagerAdapter.addFragment(MapFragment.newInstance(), tabMap);
         mViewPager.setAdapter(sectionsPagerAdapter);
         mTabs.setupWithViewPager(mViewPager);
     }

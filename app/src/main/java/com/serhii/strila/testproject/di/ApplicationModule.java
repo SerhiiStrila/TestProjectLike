@@ -1,5 +1,7 @@
 package com.serhii.strila.testproject.di;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.serhii.strila.testproject.App;
 
 import dagger.Module;
@@ -34,5 +36,13 @@ public class ApplicationModule {
         Realm realm = Realm.getInstance(configuration);
         realm.setAutoRefresh(true);
         return realm;
+    }
+
+    @Provides
+    @PerApp
+    Gson provideGson() {
+        return new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
     }
 }

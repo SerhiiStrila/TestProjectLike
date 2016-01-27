@@ -3,4 +3,8 @@
     <declare-styleable name="CustomViewPager">
         <attr name="swipe" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="imageRatio" format="float" />
+        <attr name="autoScale" format="boolean" />
+    </declare-styleable>
 </resources>

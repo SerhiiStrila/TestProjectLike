@@ -7,8 +7,8 @@ import android.support.v7.widget.Toolbar;
 
 import com.serhii.strila.testproject.R;
 import com.serhii.strila.testproject.ui.adapter.SectionsPagerAdapter;
-import com.serhii.strila.testproject.ui.fragment.ListUsersFragment;
 import com.serhii.strila.testproject.ui.fragment.MapFragment;
+import com.serhii.strila.testproject.ui.fragment.PersonsListFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
     private void initPager() {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(
                 getSupportFragmentManager());
-        sectionsPagerAdapter.addFragment(ListUsersFragment.newInstance(), "List");
+        sectionsPagerAdapter.addFragment(PersonsListFragment.newInstance(), "List");
         sectionsPagerAdapter.addFragment(MapFragment.newInstance(), "Map");
         mViewPager.setAdapter(sectionsPagerAdapter);
         mTabs.setupWithViewPager(mViewPager);

@@ -1,5 +1,8 @@
 package com.serhii.strila.testproject.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -8,20 +11,32 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Person extends RealmObject {
 
+    @SerializedName("id")
+    @Expose
     @PrimaryKey
-    private int id;
-
+    private long id;
+    @SerializedName("location")
+    @Expose
     private String location;
-
+    @SerializedName("photo")
+    @Expose
+    private String photo;
+    @SerializedName("status")
+    @Expose
     private String status;
 
-    private String photo;
+    public enum Status {
+        NONE,
+        LIKE,
+        HATE,
+        REMOVED
+    }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -7,4 +7,6 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="splash.activity.hi">Hi!</string>
     <string name="generate.activity.generate">Generate</string>
+    <string name="item.person.dislike">Dislike</string>
+    <string name="item.person.like">Like</string>
 </resources>

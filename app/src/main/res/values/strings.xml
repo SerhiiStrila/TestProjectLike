@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">TestProject</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_maps">Map</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="splash.activity.hi">Hi!</string>
+
     <string name="generate.activity.generate">Generate</string>
+    <string name="generate.activity.again">Tap back button again to exit</string>
+
     <string name="item.person.dislike">Dislike</string>
     <string name="item.person.like">Like</string>
+
     <string name="main.activity.tab.list">List</string>
     <string name="main.activity.tab.map">Map</string>
+
+    <string name="match.activity.title">Matched</string>
+    <string name="match.activity.cool">Cool</string>
+    <string name="match.activity.congratulation">Congratulation!</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.serhii.strila.testproject;
+package com.serhii.strila.testproject.ui.listener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

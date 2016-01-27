@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.reflect.TypeToken;
-import com.serhii.strila.testproject.EndlessListener;
 import com.serhii.strila.testproject.R;
 import com.serhii.strila.testproject.Utils;
 import com.serhii.strila.testproject.model.Person;
+import com.serhii.strila.testproject.ui.activity.GenerateActivity;
+import com.serhii.strila.testproject.ui.activity.MatchActivity;
 import com.serhii.strila.testproject.ui.adapter.PersonAdapter;
+import com.serhii.strila.testproject.ui.listener.EndlessListener;
+import com.serhii.strila.testproject.ui.listener.OnItemClickListener;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.ArrayList;
@@ -22,7 +25,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.realm.RealmChangeListener;
 
-public class PersonsListFragment extends BaseFragment implements RealmChangeListener {
+public class PersonsListFragment extends BaseFragment implements RealmChangeListener,
+        OnItemClickListener {
 
     @Bind(R.id.rv_users)
     RecyclerView mRvUsers;
@@ -51,6 +55,10 @@ public class PersonsListFragment extends BaseFragment implements RealmChangeList
     @Override
     public void onChange() {
         mAdapter.notifyDataSetChanged();
+        if (mAdapter.getDataSize() == 0) {
+            GenerateActivity.startActivity(getContext());
+            mScrollListener.reLoad();
+        }
     }
 
     @Override
@@ -59,9 +67,24 @@ public class PersonsListFragment extends BaseFragment implements RealmChangeList
         super.onDestroyView();
     }
 
+    @Override
+    public void onLikeClick(int position) {
+        Person person = mAdapter.getItem(position);
+        if (Person.Status.valueOf(person.getStatus().toUpperCase()) == Person.Status.LIKE) {
+            MatchActivity.startActivity(getContext(), person.getPhoto());
+        }
+        mRealm.executeTransaction(realm -> mAdapter.getItem(position).removeFromRealm());
+    }
+
+    @Override
+    public void onDislikeClick(int position) {
+        mRealm.executeTransaction(realm -> mAdapter.getItem(position).removeFromRealm());
+    }
+
     private void initList() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        mAdapter = new PersonAdapter(mRealm.where(Person.class).findAll());
+        mAdapter = new PersonAdapter(mRealm.where(Person.class).findAllSorted("id"));
+        mAdapter.setOnClickListener(this);
         mRvUsers.setHasFixedSize(true);
         mRvUsers.setLayoutManager(layoutManager);
         mRvUsers.setAdapter(mAdapter);

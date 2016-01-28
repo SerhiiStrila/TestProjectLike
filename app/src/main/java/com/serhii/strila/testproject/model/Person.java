@@ -11,6 +11,8 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Person extends RealmObject {
 
+    public static final String ID = "id";
+
     @SerializedName("id")
     @Expose
     @PrimaryKey

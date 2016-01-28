@@ -83,7 +83,7 @@ public class PersonsListFragment extends BaseFragment implements RealmChangeList
 
     private void initList() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        mAdapter = new PersonAdapter(mRealm.where(Person.class).findAllSorted("id"));
+        mAdapter = new PersonAdapter(mRealm.where(Person.class).findAllSorted(Person.ID));
         mAdapter.setOnClickListener(this);
         mRvUsers.setHasFixedSize(true);
         mRvUsers.setLayoutManager(layoutManager);
